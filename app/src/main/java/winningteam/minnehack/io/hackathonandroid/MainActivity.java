@@ -45,14 +45,14 @@ public class MainActivity extends AppCompatActivity {
     private void showSportDetailsActivity()
     {
         Intent showSportActivityIntent = new Intent(this, SportDetailsActivity.class);
-        int weight = Integer.parseInt(weightEditText.getText().toString());
-        showSportActivityIntent.putExtra("weight", weight);
-        int height = Integer.parseInt(heightEditText.getText().toString());
-        showSportActivityIntent.putExtra("height", height);
-        int age = Integer.parseInt(ageEditText.getText().toString());
-        showSportActivityIntent.putExtra("age", age);
-        String gender = genderSpinner.getSelectedItem().toString();
-        showSportActivityIntent.putExtra("gender", gender);
+//        float weight = Integer.parseInt(weightEditText.getText().toString());
+//        showSportActivityIntent.putExtra("weight", weight);
+//        float height = Integer.parseInt(heightEditText.getText().toString());
+//        showSportActivityIntent.putExtra("height", height);
+//        float age = Integer.parseInt(ageEditText.getText().toString());
+//        showSportActivityIntent.putExtra("age", age);
+//        String gender = genderSpinner.getSelectedItem().toString();
+//        showSportActivityIntent.putExtra("gender", gender);
 
         startActivity(showSportActivityIntent);
     }

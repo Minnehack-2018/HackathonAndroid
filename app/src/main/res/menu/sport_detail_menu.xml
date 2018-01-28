@@ -3,7 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
  <item
         android:id="@+id/action_addSport"
-        android:orderInCategory="1"
-        app:showAsAction="ifRoom"
+        android:orderInCategory="2"
+        app:showAsAction="never"
         android:title="Add Sport"/>
+ <item
+     android:id="@+id/action_refreshHeartRate"
+     android:orderInCategory="1"
+     app:showAsAction="never"
+     android:title="Refresh Heart Rate"/>
 </menu>

@@ -33,15 +33,15 @@ public class SportDetailsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_sport_details);
 
         Intent starter = getIntent();
-        height = starter.getDoubleExtra("height",0);
-        weight = starter.getDoubleExtra("weight",0);
-        age = starter.getIntExtra("age",0);
-        gender = starter.getStringExtra("gender");
+//        height = starter.getDoubleExtra("height",0);
+//        weight = starter.getDoubleExtra("weight",0);
+//        age = starter.getIntExtra("age",0);
+//        gender = starter.getStringExtra("gender");
 
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Choose an Option");
-        String[] options = { "A", "B", "C" };
+        String[] options = { "Football", "Basketball", "Soccer", "Running", "Golf" };
         builder.setItems(options, actionListener);
         builder.setNegativeButton("Cancel", null);
         actions = builder.create();
