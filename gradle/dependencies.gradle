@@ -2,6 +2,7 @@ ext {
     versions = [
             lifecycle: "1.1.0",
             persistence: "1.0.0",
+            gson: "2.8.2"
     ]
 
     libraries = [
@@ -9,7 +10,8 @@ ext {
             livedata: [
                     "android.arch.lifecycle:livedata:${versions.lifecycle}",
                     "android.arch.lifecycle:common-java8:${versions.lifecycle}"
-                    ]
+                    ],
+            gson: "com.google.code.gson:gson:${versions.gson}"
     ]
 
     testLibraries = [

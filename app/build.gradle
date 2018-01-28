@@ -5,6 +5,7 @@ android {
     defaultConfig {
         applicationId "winningteam.minnehack.io.hackathonandroid"
         minSdkVersion 24
+        //noinspection OldTargetApi
         targetSdkVersion 26
         versionCode 1
         versionName "1.0"
@@ -26,5 +27,6 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
 
     implementation libraries.room
+    implementation libraries.gson
     testImplementation testLibraries.room
 }
