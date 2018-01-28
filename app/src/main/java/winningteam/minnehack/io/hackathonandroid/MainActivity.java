@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 
 public class MainActivity extends AppCompatActivity {
@@ -20,8 +21,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ageEditText =  findViewById(R.id.age_EditText);
         weightEditText =  findViewById(R.id.weight_EditText);
-        heightEditText =  findViewById(R.id.weight_EditText);
-        sportSpinner =  findViewById(R.id.sports_Spinner);
+        heightEditText =  findViewById(R.id.height_EditText);
         genderSpinner =  findViewById(R.id.gender_Spinner);
 
     }
@@ -34,11 +34,14 @@ public class MainActivity extends AppCompatActivity {
     private void showSportDetailsActivity()
     {
         Intent showSportActivityIntent = new Intent(this, SportDetailsActivity.class);
-        showSportActivityIntent.putExtra("weight", Integer.parseInt(weightEditText.getText().toString()));
-        showSportActivityIntent.putExtra("height", Integer.parseInt(heightEditText.getText().toString()));
-        showSportActivityIntent.putExtra("age", Integer.parseInt(ageEditText.getText().toString()));
-        showSportActivityIntent.putExtra("sport", Integer.parseInt(sportSpinner.getSelectedItem().toString()));
-        showSportActivityIntent.putExtra("gender", Integer.parseInt(genderSpinner.getSelectedItem().toString()));
+        int weight = Integer.parseInt(weightEditText.getText().toString());
+        showSportActivityIntent.putExtra("weight", weight);
+        int height = Integer.parseInt(heightEditText.getText().toString());
+        showSportActivityIntent.putExtra("height", height);
+        int age = Integer.parseInt(ageEditText.getText().toString());
+        showSportActivityIntent.putExtra("age", age);
+        String gender = genderSpinner.getSelectedItem().toString();
+        showSportActivityIntent.putExtra("gender", gender);
 
         startActivity(showSportActivityIntent);
     }

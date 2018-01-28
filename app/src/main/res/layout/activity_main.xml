@@ -8,7 +8,6 @@
     android:orientation="vertical">
 
     <LinearLayout
-        android:id="@+id/first_name_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -31,8 +30,6 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/last_name_layout"
-        android:layout_below="@id/first_name_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -40,7 +37,6 @@
         android:layout_marginRight="16dp">
 
         <TextView
-            android:id="@+id/last_name_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Last Name:  "
@@ -62,7 +58,6 @@
         android:layout_marginRight="16dp">
 
         <TextView
-            android:id="@+id/age_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Age: "
@@ -90,7 +85,6 @@
         android:layout_marginRight="16dp">
 
         <TextView
-            android:id="@+id/weight_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Weight: "
@@ -118,7 +112,6 @@
         android:layout_marginRight="16dp">
 
         <TextView
-            android:id="@+id/height_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Height: "
@@ -162,31 +155,6 @@
             android:entries="@array/gender_array"/>
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginTop="16dp">
-
-        <TextView
-            android:id="@+id/select_sport_tv"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="@android:color/black"
-            android:textSize="16sp"
-            android:text="Sport:"/>
-
-        <Spinner
-
-            android:id="@+id/sports_Spinner"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@android:drawable/btn_dropdown"
-            android:spinnerMode="dropdown"
-            android:entries="@array/sports_array"/>
-    </LinearLayout>
 
     <Button
         android:layout_width="wrap_content"

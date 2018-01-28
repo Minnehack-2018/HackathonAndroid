@@ -16,7 +16,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SportDetailsActivity"></activity>
+        <activity android:name=".SportDetailsActivity"
+            android:label="@string/app_name"
+            android:parentActivityName=".MainActivity"></activity>
     </application>
 
 </manifest>
