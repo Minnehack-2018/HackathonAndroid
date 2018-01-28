@@ -16,8 +16,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class SportDetailsActivity extends AppCompatActivity {
-    private int height;
-    private int weight;
+    private double height;
+    private double weight;
     private int age;
     private String gender;
     AlertDialog actions;
@@ -27,8 +27,8 @@ public class SportDetailsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_sport_details);
 
         Intent starter = getIntent();
-        height = starter.getIntExtra("height",0);
-        weight = starter.getIntExtra("weight",0);
+        height = starter.getDoubleExtra("height",0);
+        weight = starter.getDoubleExtra("weight",0);
         age = starter.getIntExtra("age",0);
         gender = starter.getStringExtra("gender");
 

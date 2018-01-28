@@ -14,7 +14,8 @@ public class MainActivity extends AppCompatActivity {
     private EditText ageEditText;
     private EditText weightEditText;
     private EditText heightEditText;
-    private Spinner sportSpinner;
+    private EditText firstNameEditText;
+    private EditText lastNameEditText;
     private Spinner genderSpinner;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +25,8 @@ public class MainActivity extends AppCompatActivity {
         weightEditText =  findViewById(R.id.weight_EditText);
         heightEditText =  findViewById(R.id.height_EditText);
         genderSpinner =  findViewById(R.id.gender_Spinner);
+        firstNameEditText = findViewById(R.id.first_name_edit_text);
+        lastNameEditText = findViewById(R.id.last_name_edit_text);
 
     }
 
@@ -31,17 +34,27 @@ public class MainActivity extends AppCompatActivity {
     {
         if(ageEditText.getText().toString().matches(""))
         {
-            Toast.makeText(this, "Please Enter age!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Please Enter Age!", Toast.LENGTH_SHORT).show();
             return;
         }
         if(heightEditText.getText().toString().matches(""))
         {
-            Toast.makeText(this, "Please Enter height!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Please Enter Height!", Toast.LENGTH_SHORT).show();
             return;
         }
         if(weightEditText.getText().toString().matches(""))
         {
-            Toast.makeText(this, "Please Enter weight!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Please Enter Weight!", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if(firstNameEditText.getText().toString().matches(""))
+        {
+            Toast.makeText(this, "Please Enter First Name!", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if(lastNameEditText.getText().toString().matches(""))
+        {
+            Toast.makeText(this, "Please Enter Last Name!", Toast.LENGTH_SHORT).show();
             return;
         }
         showSportDetailsActivity();
@@ -50,11 +63,11 @@ public class MainActivity extends AppCompatActivity {
     private void showSportDetailsActivity()
     {
         Intent showSportActivityIntent = new Intent(this, SportDetailsActivity.class);
-        int weight = Integer.parseInt(weightEditText.getText().toString());
+        double weight = Integer.parseInt(weightEditText.getText().toString());
         showSportActivityIntent.putExtra("weight", weight);
-        int height = Integer.parseInt(heightEditText.getText().toString());
+        double height = Integer.parseInt(heightEditText.getText().toString());
         showSportActivityIntent.putExtra("height", height);
-        int age = Integer.parseInt(ageEditText.getText().toString());
+        double age = Integer.parseInt(ageEditText.getText().toString());
         showSportActivityIntent.putExtra("age", age);
         String gender = genderSpinner.getSelectedItem().toString();
         showSportActivityIntent.putExtra("gender", gender);
