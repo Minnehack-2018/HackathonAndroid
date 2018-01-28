@@ -1,9 +1,18 @@
 package model;
 
+import android.arch.persistence.room.ColumnInfo;
+import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.PrimaryKey;
+
+@Entity(tableName = "users")
 public class User {
 
+    @PrimaryKey
+    private int id;
     //Private User Variables
+    @ColumnInfo(name = "first_name")
     private String firstName;
+    @ColumnInfo(name = "last_name")
     private String lastName;
 
     private double weight;
@@ -14,6 +23,14 @@ public class User {
 
     public String getFirstName() {
         return firstName;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public void setFirstName(String firstName) {
