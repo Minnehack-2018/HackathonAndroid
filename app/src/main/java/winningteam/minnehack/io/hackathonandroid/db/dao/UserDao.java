@@ -3,12 +3,12 @@ package winningteam.minnehack.io.hackathonandroid.db.dao;
 import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.Update;
 
-import model.WarmUp;
+import model.User;
 
-public interface warmupDao {
+public interface UserDao {
     @Insert
-    void insertWarmUp(WarmUp warmUp);
+    public void insertUser(User user);
 
     @Update
-    void updateWarmUp(WarmUp warmUp);
+    public void updateUser(User user);
 }
