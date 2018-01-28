@@ -5,7 +5,7 @@ import android.arch.persistence.room.Update;
 
 import model.WarmUp;
 
-public interface WarmupDao {
+public interface WarmUpDao {
     @Insert
     void insertWarmUp(WarmUp warmUp);
 
