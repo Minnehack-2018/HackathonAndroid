@@ -1,15 +1,26 @@
 package winningteam.minnehack.io.hackathonandroid.db.dao;
 
+import android.arch.lifecycle.LiveData;
+import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.OnConflictStrategy;
 import android.arch.persistence.room.Query;
 
-import model.Sport;
+import java.util.List;
 
+import winningteam.minnehack.io.hackathonandroid.model.Sport;
+
+@Dao
 public interface SportDao {
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    void insertSport(Sport sport);
+    @Query("SELECT * FROM sports")
+    LiveData<List<Sport>> loadAllSports();
 
-    @Query("SELECT * FROM sport WHERE id = :id")
-    Sport getSport(String id);
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    void insertAll(List<Sport> sports);
+
+    @Query("select * from sports where id = :sportId")
+    LiveData<Sport> loadSport(int sportId);
+
+    @Query("select * from sports where id = :sportId")
+    Sport loadSportSync(int sportId);
 }

@@ -1,66 +1,50 @@
 package winningteam.minnehack.io.hackathonandroid.db.repository;
 
-import android.content.Context;
-import android.support.annotation.NonNull;
+import android.arch.lifecycle.LiveData;
+import android.arch.lifecycle.MediatorLiveData;
 
-import java.lang.ref.WeakReference;
+import java.util.List;
 
-import model.User;
+import winningteam.minnehack.io.hackathonandroid.model.User;
 import winningteam.minnehack.io.hackathonandroid.db.AppDatabase;
-import winningteam.minnehack.io.hackathonandroid.db.AppExecutors;
-import winningteam.minnehack.io.hackathonandroid.db.UserCallback;
-import winningteam.minnehack.io.hackathonandroid.db.dao.UserDao;
 
 public class UserRepository {
-    private final UserDao mUserDao;
-    private static UserRepository INSTANCE;
-    private final AppExecutors mAppExecutors;
-    private User mCachedUser;
+    private static UserRepository sInstance;
+    private final AppDatabase mDatabase;
+    private MediatorLiveData<List<User>> mObservableUsers;
 
-    private UserRepository(UserDao userDao, AppExecutors executors) {
-        this.mUserDao = userDao;
-        this.mAppExecutors = executors;
+
+    public UserRepository(final AppDatabase database) {
+        mDatabase = database;
+        mObservableUsers = new MediatorLiveData<>();
+
+        mObservableUsers.addSource(mDatabase.userDao().loadAllUsers(), users -> {
+            if (mDatabase.getDatabaseCreated().getValue() != null) {
+                mObservableUsers.postValue(users);
+            }
+        });
     }
 
-    public static UserRepository getInstance(@NonNull Context context, @NonNull AppExecutors executors) {
-        if (INSTANCE == null) {
+    public static UserRepository getInstance(final AppDatabase database) {
+        if (sInstance == null) {
             synchronized (UserRepository.class) {
-                if (INSTANCE == null) {
-                    AppDatabase database = AppDatabase.getInstance(context);
-                    INSTANCE = new UserRepository(database.userDao(), executors);
+                if (sInstance == null) {
+                    sInstance = new UserRepository(database);
                 }
             }
         }
-        return INSTANCE;
+        return sInstance;
     }
 
-    void getUser(@NonNull final UserCallback callback) {
-        final WeakReference<UserCallback> userCallbackWeakReference = new WeakReference<>(callback);
-        mAppExecutors.diskIO().execute(() -> {
-            final User user = mUserDao.getUser();
-            mAppExecutors.mainThread().execute(() -> {
-                final UserCallback userCallback = userCallbackWeakReference.get();
-                if (userCallback == null) {
-                    userCallback.onDataNotAvailable();
-                } else {
-                    mCachedUser = user;
-                    userCallback.onUserLoaded(mCachedUser);
-                }
-            });
-        });
+    public LiveData<List<User>> loadUsers() {
+        return mObservableUsers;
     }
 
-    void updateUser(@NonNull final User user, @NonNull UserCallback callback) {
-        final WeakReference<UserCallback> userCallbackWeakReference = new WeakReference<>(callback);
-        mAppExecutors.diskIO().execute(() -> {
-            mUserDao.insertUser(user);
-            mAppExecutors.mainThread().execute(() -> {
-                UserCallback userCallback = userCallbackWeakReference.get();
-                if (userCallback != null) {
-                    userCallback.onUserUpdated(user);
-                }
-            });
-        });
-
+    public void insertUser(User user){
+        mDatabase.userDao().insertUser(user);
     }
+
+
+
+
 }

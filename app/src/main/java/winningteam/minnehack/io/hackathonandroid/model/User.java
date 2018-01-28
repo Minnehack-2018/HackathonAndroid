@@ -1,10 +1,14 @@
-package model;
+package winningteam.minnehack.io.hackathonandroid.model;
 
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.PrimaryKey;
+import android.arch.persistence.room.TypeConverters;
 
 import java.util.Objects;
+
+import winningteam.minnehack.io.hackathonandroid.GenderConvertor;
 
 @Entity(tableName = "users")
 public class User {
@@ -29,6 +33,7 @@ public class User {
         this.age = age;
     }
 
+    @TypeConverters(GenderConvertor.class)
     private GenderType gender;
 
 
@@ -80,6 +85,7 @@ public class User {
         this.gender = gender;
     }
 
+    @Ignore
     public User() {
     }
 

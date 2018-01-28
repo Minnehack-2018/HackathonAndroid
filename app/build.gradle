@@ -32,6 +32,8 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
     implementation libraries.room
     implementation libraries.gson
+    implementation libraries.livedata
+    annotationProcessor annProcessor.room
     testImplementation testLibraries.room
     implementation 'com.android.support:cardview-v7:26.1.0'
 }

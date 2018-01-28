@@ -1,3 +1,5 @@
+package winningteam.minnehack.io.hackathonandroid;
+
 import android.arch.persistence.room.TypeConverter;
 
 import com.google.gson.Gson;
@@ -7,23 +9,23 @@ import java.lang.reflect.Type;
 import java.util.Collections;
 import java.util.List;
 
-import model.WarmUpImage;
+import winningteam.minnehack.io.hackathonandroid.model.WarmUpImage;
 
 public class TypeConverters{
 
     @TypeConverter
-    public static List<WarmUpImage> stringToWarmUpImage(String json) {
+    public static WarmUpImage stringToWarmUpImage(String json) {
         if (json == null) {
-            return Collections.emptyList();
+            return null;
         }
 
-        Type type = new TypeToken<List<WarmUpImage>>() {}.getType();
+        Type type = new TypeToken<WarmUpImage>() {}.getType();
         return new Gson().fromJson(json, type);
     }
 
     @TypeConverter
-    public static String WarmUpImagesToString(List<WarmUpImage> data) {
-        Type type = new TypeToken<List<WarmUpImage>>() {}.getType();
+    public static String WarmUpImagesToString(WarmUpImage data) {
+        Type type = new TypeToken<WarmUpImage>() {}.getType();
         return new Gson().toJson(data, type);
     }
 }

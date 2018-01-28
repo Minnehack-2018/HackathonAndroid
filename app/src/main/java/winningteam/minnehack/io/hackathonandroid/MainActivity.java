@@ -5,11 +5,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.Spinner;
 
-import model.GenderType;
-import model.User;
+import winningteam.minnehack.io.hackathonandroid.model.GenderType;
+import winningteam.minnehack.io.hackathonandroid.model.User;
 
 public class MainActivity extends AppCompatActivity {
 

@@ -1,4 +1,4 @@
-package model;
+package winningteam.minnehack.io.hackathonandroid.model;
 
 public enum GenderType {
     MALE("male"),

@@ -19,4 +19,8 @@ ext {
             room: "android.arch.persistence.room:testing:${versions.persistence}"
     ]
 
+    annProcessor = [
+            room: "android.arch.persistence.room:compiler:$versions.persistence"
+    ]
+
 }

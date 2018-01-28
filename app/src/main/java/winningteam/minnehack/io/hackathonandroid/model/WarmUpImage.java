@@ -1,4 +1,4 @@
-package model;
+package winningteam.minnehack.io.hackathonandroid.model;
 
 import android.content.Context;
 
