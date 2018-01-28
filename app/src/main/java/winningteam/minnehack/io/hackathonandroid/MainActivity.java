@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
     public void onSubmitClick(View v)
     {
         createUser();
-        //showSportDetailsActivity();
+        showSportDetailsActivity();
     }
 
     private void createUser() {

@@ -3,13 +3,19 @@ package winningteam.minnehack.io.hackathonandroid;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.Resources;
+import android.graphics.Color;
+import android.graphics.Typeface;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
+import android.util.TypedValue;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
@@ -58,42 +64,80 @@ public class SportDetailsActivity extends AppCompatActivity {
         }
     };
 
-    public void getData(String [][] source)
+    public void getData()
     {
-        for(int i=0; i<source.length; i++)
-        {
-          //  CardView cv = new CardView();
+        setContentView(R.layout.activity_sport_details);
 
-        }
+        CardView cv = new CardView(this);
+        Resources r = getResources();
+        int cardHeightPX = ((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 380, r.getDisplayMetrics()));
+        int cardMarginsPX = ((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 8, r.getDisplayMetrics()));
+
+
+        LinearLayout.LayoutParams cvl = new LinearLayout.LayoutParams(CardView.LayoutParams.MATCH_PARENT,cardHeightPX);
+        cvl.setMargins(cardMarginsPX,cardMarginsPX,cardMarginsPX,cardMarginsPX);
+        LinearLayout ll = this.findViewById(R.id.cardContainer);
+        ll.addView(cv,cvl);
+
+        LinearLayout cardContents = new LinearLayout(this);
+        cardContents.setOrientation(LinearLayout.VERTICAL);
+        LinearLayout.LayoutParams lllp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
+
+        ImageView iv = new ImageView(this);
+        int layoutHeightPX = ((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 200, r.getDisplayMetrics()));
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, layoutHeightPX);
+        iv.setScaleType(ImageView.ScaleType.CENTER_CROP);
+        iv.setImageResource(R.drawable.pushup);
+        cardContents.addView(iv,params);
+
+        TextView tvTitle = new TextView(this);
+        LinearLayout.LayoutParams params_tvTitle = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+        tvTitle.setMaxLines(3);
+        tvTitle.setPadding(cardMarginsPX,cardMarginsPX,cardMarginsPX,cardMarginsPX);
+        tvTitle.setText("Warm up Title");
+        tvTitle.setTextColor(Color.BLACK);
+        tvTitle.setTypeface(Typeface.DEFAULT_BOLD);
+        tvTitle.setTextSize(TypedValue.COMPLEX_UNIT_SP, 22);
+        cardContents.addView(tvTitle, params_tvTitle);
+
+        TextView tvDescription= new TextView(this);
+        LinearLayout.LayoutParams params_tvDescription = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+        tvDescription.setMaxLines(4);
+        tvDescription.setPadding(cardMarginsPX,cardMarginsPX,cardMarginsPX,cardMarginsPX);
+        tvDescription.setText("Warm up Description");
+        tvDescription.setTextColor(Color.BLACK);
+        tvDescription.setTypeface(Typeface.DEFAULT_BOLD);
+        tvDescription.setTextSize(TypedValue.COMPLEX_UNIT_SP, 14);
+        cardContents.addView(tvDescription, params_tvDescription);
+
+        cv.addView(cardContents,lllp);
+
+
+
+
     }
 
     public void onClickButton(View v)
     {
-        setContentView(R.layout.activity_sport_details);
-//        ScrollView sv = (ScrollView) this.findViewById(android.R.id.content);
-        CardView cv = new CardView(this);
-//        cv.setlayout
-        LinearLayout ll = this.findViewById(R.id.ll);
-        TextView tv = new TextView(this);
-        tv.setText("Zobryyyy");
-        ll.addView(tv);
+//        setContentView(R.layout.activity_sport_details);
+////        ScrollView sv = (ScrollView) this.findViewById(android.R.id.content);
+//        CardView cv = new CardView(this);
+////        cv.setlayout
+//        LinearLayout ll = this.findViewById(R.id.ll);
+//        TextView tv = new TextView(this);
+//        tv.setText("Zobryyyy");
+//        ll.addView(tv);
+        getData();
 
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // COMPLETED (9) Within onCreateOptionsMenu, use getMenuInflater().inflate to inflate the menu
         getMenuInflater().inflate(R.menu.sport_detail_menu, menu);
-        // COMPLETED (10) Return true to display your menu
         return true;
     }
 
-    // COMPLETED (11) Override onOptionsItemSelected
-    // COMPLETED (12) Within onOptionsItemSelected, get the ID of the item that was selected
-    // COMPLETED (13) If the item's ID is R.id.action_search, show a Toast and return true to tell Android that you've handled this menu click
-    // COMPLETED (14) Don't forgot to call .show() on your Toast
-    // COMPLETED (15) If you do NOT handle the menu click, return super.onOptionsItemSelected to let Android handle the menu click
-    @Override
+   @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int itemThatWasClickedId = item.getItemId();
         if (itemThatWasClickedId == R.id.action_addSport) {
