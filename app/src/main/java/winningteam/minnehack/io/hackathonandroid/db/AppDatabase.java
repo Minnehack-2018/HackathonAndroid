@@ -8,18 +8,17 @@ import android.arch.persistence.room.Room;
 import android.arch.persistence.room.RoomDatabase;
 import android.content.Context;
 import android.support.annotation.NonNull;
-import android.support.annotation.VisibleForTesting;
 
 import java.util.List;
 
 import winningteam.minnehack.io.hackathonandroid.db.dao.SportDao;
+import winningteam.minnehack.io.hackathonandroid.db.dao.UserDao;
+import winningteam.minnehack.io.hackathonandroid.db.dao.WarmUpDao;
 import winningteam.minnehack.io.hackathonandroid.model.Sport;
 import winningteam.minnehack.io.hackathonandroid.model.User;
 import winningteam.minnehack.io.hackathonandroid.model.WarmUp;
-import winningteam.minnehack.io.hackathonandroid.db.dao.UserDao;
-import winningteam.minnehack.io.hackathonandroid.db.dao.WarmUpDao;
 
-@Database(entities = {WarmUp.class, User.class}, version = 1)
+@Database(entities = {WarmUp.class, User.class, Sport.class}, version = 1 ,exportSchema = false)
 public abstract class AppDatabase extends RoomDatabase {
     private static final String DATABASE_NAME = "warm-up.db";
     private static AppDatabase sInstance;
@@ -48,7 +47,7 @@ public abstract class AppDatabase extends RoomDatabase {
 
     private static AppDatabase buildDatabase(final Context appContext,
                                              final AppExecutors executors) {
-        return Room.databaseBuilder(appContext, AppDatabase.class, DATABASE_NAME)
+        return Room.inMemoryDatabaseBuilder(appContext, AppDatabase.class)
                 .addCallback(new Callback() {
                     @Override
                     public void onCreate(@NonNull SupportSQLiteDatabase db) {

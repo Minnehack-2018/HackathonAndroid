@@ -21,7 +21,7 @@ public class App extends Application {
         return AppDatabase.getInstance(this, mAppExecutors);
     }
 
-    public UserRepository getRepository() {
+    public UserRepository getUserRepository() {
         return UserRepository.getInstance(getDatabase());
     }
 }

@@ -2,12 +2,15 @@ package winningteam.minnehack.io.hackathonandroid.model;
 
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.ForeignKey;
+import android.arch.persistence.room.Ignore;
+import android.arch.persistence.room.Index;
 import android.arch.persistence.room.PrimaryKey;
 import android.arch.persistence.room.TypeConverters;
 
 import java.util.List;
 
-@Entity(tableName = "warmups", foreignKeys = @ForeignKey(entity = Sport.class, parentColumns = "id", childColumns = "sportId"))
+@Entity(tableName = "warmups", foreignKeys = @ForeignKey(entity = Sport.class, parentColumns = "id", childColumns = "sportId"),
+indices = {@Index(value = "sportId")})
 public class WarmUp {
     @PrimaryKey
     private int id;
@@ -33,6 +36,7 @@ public class WarmUp {
         this.image = image;
     }
 
+    @Ignore
     public WarmUp() {
     }
 
