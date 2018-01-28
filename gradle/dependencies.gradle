@@ -1,0 +1,20 @@
+ext {
+    versions = [
+            lifecycle: "1.1.0",
+            persistence: "1.0.0",
+    ]
+
+    libraries = [
+            room: "android.arch.persistence.room:runtime:${versions.persistence}",
+            livedata: [
+                    "android.arch.lifecycle:livedata:${versions.lifecycle}",
+                    "android.arch.lifecycle:common-java8:${versions.lifecycle}"
+                    ]
+    ]
+
+    testLibraries = [
+            livedata: "android.arch.core:core-testing:${versions.lifecycle}",
+            room: "android.arch.persistence.room:testing:${versions.persistence}"
+    ]
+
+}

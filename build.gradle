@@ -20,6 +20,8 @@ allprojects {
         google()
         jcenter()
     }
+
+    apply from: "${rootDir}/gradle/dependencies.gradle"
 }
 
 task clean(type: Delete) {
