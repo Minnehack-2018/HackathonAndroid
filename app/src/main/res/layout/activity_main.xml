@@ -70,6 +70,7 @@
             android:textSize="20sp"/>
 
         <EditText
+            android:id="@+id/age_EditText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:inputType="number"
@@ -97,6 +98,7 @@
             android:textSize="20sp"/>
 
         <EditText
+            android:id="@+id/weight_EditText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:inputType="number"
@@ -124,6 +126,7 @@
             android:textSize="20sp"/>
 
         <EditText
+            android:id="@+id/height_EditText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:inputType="number"
@@ -151,7 +154,7 @@
             android:text="Gender:"/>
 
         <Spinner
-            android:id="@+id/gender_spinner"
+            android:id="@+id/gender_Spinner"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@android:drawable/btn_dropdown"
@@ -177,7 +180,7 @@
 
         <Spinner
 
-            android:id="@+id/sports_spinner"
+            android:id="@+id/sports_Spinner"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@android:drawable/btn_dropdown"
@@ -191,6 +194,7 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="24dp"
         android:text="Submit"
+        android:onClick="onSubmitClick"
         android:textSize="18sp"
         android:paddingTop="24dp"
         android:paddingBottom="24dp"
