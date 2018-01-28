@@ -1,11 +1,13 @@
 package model;
 
 import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.PrimaryKey;
 
 import java.util.List;
 
-@Entity(tableName = "warm-ups")
+@Entity(tableName = "warmups")
 public class WarmUp {
+    @PrimaryKey
     private int id;
     private String name;
     private String repetitions;
