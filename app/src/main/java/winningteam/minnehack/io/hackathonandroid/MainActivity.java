@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -28,6 +29,21 @@ public class MainActivity extends AppCompatActivity {
 
     public void onSubmitClick(View v)
     {
+        if(ageEditText.getText().toString().matches(""))
+        {
+            Toast.makeText(this, "Please Enter age!", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if(heightEditText.getText().toString().matches(""))
+        {
+            Toast.makeText(this, "Please Enter height!", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if(weightEditText.getText().toString().matches(""))
+        {
+            Toast.makeText(this, "Please Enter weight!", Toast.LENGTH_SHORT).show();
+            return;
+        }
         showSportDetailsActivity();
     }
 
