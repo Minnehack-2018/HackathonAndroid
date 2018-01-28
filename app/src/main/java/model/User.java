@@ -19,6 +19,15 @@ public class User {
 
     private double weight;
     private double height;
+    private int age;
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
 
     private GenderType gender;
 
@@ -69,6 +78,9 @@ public class User {
 
     public void setGender(GenderType gender) {
         this.gender = gender;
+    }
+
+    public User() {
     }
 
     public User(String firstName, String lastName, double weight, double height, GenderType gender) {

@@ -1,5 +1,15 @@
 <resources>
     <string name="app_name">HackathonAndroid</string>
+    <string name="gender">Gender:</string>
+    <string name="submit">Submit</string>
+    <string name="feet">Feet</string>
+    <string name="height">Height:</string>
+    <string name="pounds">Pounds</string>
+    <string name="weight">Weight:</string>
+    <string name="years">Years</string>
+    <string name="age">Age:</string>
+    <string name="last_name">Last Name:</string>
+    <string name="first_name">First Name:</string>
     <string-array name="sports_array">
         <item>Football</item>
         <item>Soccer</item>
@@ -9,8 +19,8 @@
     </string-array>
 
     <string-array name="gender_array">
-        <item>Male</item>
-        <item>Female</item>
-        <item>Other</item>
+        <item>male</item>
+        <item>female</item>
+        <item>other</item>
     </string-array>
 </resources>

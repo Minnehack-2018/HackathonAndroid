@@ -8,12 +8,14 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 
+import model.GenderType;
+import model.User;
+
 public class MainActivity extends AppCompatActivity {
 
     private EditText ageEditText;
     private EditText weightEditText;
     private EditText heightEditText;
-    private Spinner sportSpinner;
     private Spinner genderSpinner;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +30,16 @@ public class MainActivity extends AppCompatActivity {
 
     public void onSubmitClick(View v)
     {
-        showSportDetailsActivity();
+        createUser();
+        //showSportDetailsActivity();
+    }
+
+    private void createUser() {
+        User user = new User();
+        user.setWeight(Double.parseDouble(weightEditText.getText().toString()));
+        user.setGender(GenderType.valueOf(genderSpinner.getSelectedItem().toString()));
+        user.setAge(Integer.parseInt(ageEditText.getText().toString()));
+        user.setHeight(Double.parseDouble(heightEditText.getText().toString()));
     }
 
     private void showSportDetailsActivity()
